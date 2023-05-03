@@ -1,0 +1,30 @@
+/* 页面布局 */
+.tooltip_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* 如果需要自适应换行，可以添加此属性 */
+}
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+}
+/* 分页样式 */
+.btn.active {
+    background-color: #333;
+    color: #fff;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>外卖系统后台管理界面</title>
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" type="text/css" href="/static/admin/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/jquery.fancybox.css">
+</head>
+<body>
+    <div class="header">
+        <h1>吃了么外卖系统后台管理界面</h1>
+    </div>
+    <div class="content">
+        <h2>今日订单成交数量：101</h2>
+        <h2>今日订单成交金额：¥4056</h2>
+        <h2>注册用户信息</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>手机号码</th>
+                    <th>邮箱地址</th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for user in users %}
+              <tr>
+                 <td>{{ loop.index }}</td>
+                 <td>{{ user.user_name }}</td>
+                 <td>{{ user.phone }}</td>
+                 <td>{{ user.email }}</td>
+              </tr>
+             {% endfor %}
+                <!-- 其他注册用户信息 -->
+            </tbody>
+        </table>
+    </div>
+    <div class="tooltip_section">
+        {% if paginate.has_prev %}
+        <a class="btn btn-primary" href="{{ url_for('.index') }}?page={{ paginate.prev_num }}">上一页</a>
+        {% endif %}
+        {% for nums in paginate.iter_pages(left_edge=2,left_current=2,right_current=5,right_edge=2) %}
+        {% if nums %}
+        <a class="btn btn-success" href="{{ url_for('.index') }}?page={{ nums }}">{{ nums }}</a>
+        {% else %}
+        <a class="btn btn-success">...</a>
+        {% endif %}
+        {% endfor %}
+        {% if paginate.has_next %}
+        <a class="btn btn-danger" href="{{ url_for('.index') }}?page={{ paginate.next_num }}">下一页</a>
+        {% endif %}
+    </div>
+    <!-- 引入JS文件 -->
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
